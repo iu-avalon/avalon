@@ -39,6 +39,8 @@
   gem 'validates_email_format_of'
   gem 'loofah'
   gem 'omniauth-cas', :git => "https://github.com/cjcolvar/omniauth-cas.git"
+  # Use below for generic installation
+  #gem 'omniauth-cas'
   gem 'omniauth-identity'
   gem 'omniauth-ldap'
 
