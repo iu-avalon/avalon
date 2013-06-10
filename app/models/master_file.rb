@@ -1,3 +1,17 @@
+# Copyright 2011-2013, The Trustees of Indiana University and Northwestern
+#   University.  Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+# 
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed 
+#   under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+#   CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+#   specific language governing permissions and limitations under the License.
+# ---  END LICENSE_HEADER BLOCK  ---
+
 require 'fileutils'
 
 class MasterFile < ActiveFedora::Base
@@ -163,14 +177,14 @@ class MasterFile < ActiveFedora::Base
     status?('SUCCEEDED')
   end
 
-  def stream_details(token)
+  def stream_details(token,host=nil)
     flash, hls = [], []
     derivatives.each do |d|
       common = { quality: d.encoding.quality.first,
                  mimetype: d.encoding.mime_type.first,
                  format: d.format } 
-      flash << common.merge(url: d.tokenized_url(token, false))
-      hls << common.merge(url: d.tokenized_url(token, true)) 
+      flash << common.merge(url: Avalon.rehost(d.tokenized_url(token, false),host))
+      hls << common.merge(url: Avalon.rehost(d.tokenized_url(token, true),host)) 
     end
 
     # Sorts the streams in order of quality, note: Hash order only works in Ruby 1.9 or later

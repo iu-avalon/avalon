@@ -1,3 +1,17 @@
+# Copyright 2011-2013, The Trustees of Indiana University and Northwestern
+#   University.  Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+# 
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed 
+#   under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+#   CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+#   specific language governing permissions and limitations under the License.
+# ---  END LICENSE_HEADER BLOCK  ---
+
 #require 'hydra/rights_metadata'
 
 class MediaObject < ActiveFedora::Base
@@ -342,20 +356,27 @@ class MediaObject < ActiveFedora::Base
   end
 
   def set_media_types!
-    resource_type_names = { 
-      'audio' => 'sound recording',
-      'video' => 'moving image'
-    }
-    mime_types = parts.collect { |mf| 
-      mf.file_location.nil? ? nil : Rack::Mime.mime_type(File.extname(mf.file_location)) 
-    }.compact.uniq
-    resource_types = mime_types.collect { |mime| resource_type_names[mime.split('/').first] }.compact.uniq
+    begin
+      mime_types = parts.collect { |mf| 
+        mf.file_location.nil? ? nil : Rack::Mime.mime_type(File.extname(mf.file_location)) 
+      }.compact.uniq
+      
+      resource_type_to_formatted_text_map = {'Moving image' => 'moving image', 'Sound' => 'sound recording'}
+      resource_types = self.parts.collect{|master_file| resource_type_to_formatted_text_map[master_file.file_format] }.uniq
 
-    mime_types = nil if mime_types.empty?
-    resource_types = nil if resource_types.empty?
+      mime_types = nil if mime_types.empty?
+      resource_types = nil if resource_types.empty?
 
-    descMetadata.ensure_physical_description_exists!
-    descMetadata.update_values([:physical_description, :internet_media_type] => mime_types, [:resource_type] => resource_types)
+      descMetadata.ensure_root_term_exists!(:physical_description)
+      descMetadata.ensure_root_term_exists!(:resource_type)
+
+      descMetadata.find_by_terms(:physical_description, :internet_media_type).remove
+      descMetadata.find_by_terms(:resource_type).remove
+
+      descMetadata.update_values([:physical_description, :internet_media_type] => mime_types, [:resource_type] => resource_types)
+    rescue Exception => e
+      logger.warn "Error in set_media_types!: #{e}"
+    end
   end
   
   def to_solr(solr_doc = Hash.new, opts = {})
@@ -382,4 +403,3 @@ class MediaObject < ActiveFedora::Base
       self.parts.map{|mf| mf.duration.to_i }.compact.sum
     end
 end
-

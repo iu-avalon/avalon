@@ -7,7 +7,7 @@
   <div class="control-group">
     <%= media.label field do %>
       <% if options[:tooltip] %>
-        <a href='https://wiki.dlib.indiana.edu/display/VarVideo/Resource+Description+Help#<%= default_label %>' target: '_help' data-tooltip="#<%= default_label %>_tooltip"><%= text_label %><% if options[:required] %> *<% end %></a> 
+        <a href='https://wiki.dlib.indiana.edu/display/VarVideo/Resource+Description+Help#<%= default_label %>' target='_help' data-tooltip="#<%= default_label %>_tooltip"><%= text_label %><% if options[:required] %> *<% end %></a> 
       <% else %>
         <%= text_label %><% if options[:required] %> *<% end %>
       <% end %>
@@ -21,12 +21,10 @@
     
     <%# This is NOT a good approach at all but it works for prototyping %>
     <% values = @mediaobject.send(field) %>
-  <div class="controls <% if options[:dynamic] %>dynamic<% end %>" data-inputs="<%= count %>">
+  <div class="controls <% if options[:dynamic] %>dynamic<% end %> <% if @mediaobject.errors.keys.include?(field.to_sym) %> error <% end %>" data-inputs="<%= count %>">
       <% count.times do |i| %>
         <% contents = values[i] || '' %>
         <%= text_field_tag "media_object[#{default_label}][]", contents, class: 'span8' %>
       <% end %>
     </div>
   </div>
-
-

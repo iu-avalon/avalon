@@ -1,3 +1,17 @@
+# Copyright 2011-2013, The Trustees of Indiana University and Northwestern
+#   University.  Licensed under the Apache License, Version 2.0 (the "License");
+#   you may not use this file except in compliance with the License.
+# 
+# You may obtain a copy of the License at
+# 
+# http://www.apache.org/licenses/LICENSE-2.0
+# 
+# Unless required by applicable law or agreed to in writing, software distributed 
+#   under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+#   CONDITIONS OF ANY KIND, either express or implied. See the License for the 
+#   specific language governing permissions and limitations under the License.
+# ---  END LICENSE_HEADER BLOCK  ---
+
 require 'spec_helper'
 require 'avalon/dropbox'
 require 'avalon/batch_ingest'
@@ -45,5 +59,17 @@ describe Avalon::Batch do
     Avalon::DropboxService.stub(:find_new_packages).and_return []
     Avalon::Batch.ingest
     IngestBatch.count.should == 0
+  end
+
+  it 'should have a column for file labels' do
+    pending "[VOV-1347] Wait until implemented" 
+  end
+
+  it "should be able to default to public access" do
+    pending "[VOV-1348] Wait until implemented"
+  end
+
+  it "should be able to default to specific groups" do
+    pending "[VOV-1348] Wait until implemented"
   end
 end
