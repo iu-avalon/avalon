@@ -1,14 +1,11 @@
 set :application, "matterhorn"
 set :repository,  "https://github.com/avalonmediasystem/avalon-felix/archive"
-set(:rails_env) { "development" }
 
-set(:deployment_host) { "lancelot.dlib.indiana.edu" }  # Host(s) to deploy to
-set(:deploy_to) { "/usr/local/matterhorn" }  # Directory to deploy into
+set(:deployment_host) { "elm.dlib.indiana.edu" }  # Host(s) to deploy to
+set(:deploy_to) { "/srv/avalon/matterhorn" }  # Directory to deploy into
 set(:user) { 'vov' }                # User to deploy as
 set(:branch) { "release/1.0.0" }       # Git branch to deploy
 ssh_options[:keys] = ["/opt/staging/avalon/vov_deployment_key"]
-
-set :bundle_without, [:production]
 
 role :web, deployment_host
 role :app, deployment_host
