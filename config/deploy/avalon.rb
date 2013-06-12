@@ -1,15 +1,15 @@
 set :application, "avalon"
-set :repository,  "git://github.com/avalonmediasystem/avalon.git"
-set(:rails_env) { "development" }
+set :repository,  "git://github.com/iu-avalon/avalon.git"
+set(:rails_env) { "production" }
 
-set(:deployment_host) { "lancelot.dlib.indiana.edu" }  # Host(s) to deploy to
+set(:deployment_host) { "avalon-pilot.dlib.indiana.edu" }  # Host(s) to deploy to
 set(:deploy_to) { "/var/www/avalon" }  # Directory to deploy into
 set(:user) { 'avalon' }                # User to deploy as
-set(:branch) { "release/1.0.0" }       # Git branch to deploy
+set(:branch) { "iu-pilot" }       # Git branch to deploy
 set :hls_dir, "/var/avalon/hls_streams"
 ssh_options[:keys] = ["/opt/staging/avalon/vov_deployment_key"]
 
-set :bundle_without, [:production]
+set :bundle_without, [:development, :test]
 
 role :web, deployment_host
 role :app, deployment_host
@@ -49,7 +49,7 @@ namespace :deploy do
   end
 
   task :migrate do
-    run "cd #{current_release}; bundle exec rake RAILS_ENV=development db:migrate"    
+    run "cd #{current_release}; bundle exec rake RAILS_ENV=#{rails_env} db:migrate"    
   end
 
 	task :link_local_gemfile do
