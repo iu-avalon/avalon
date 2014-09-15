@@ -23,6 +23,7 @@
 	font-size: 14px; /* Normalize font size */
 	line-height: 18px; /* Normalize line height */
 	min-height: 40px;
+	min-width: 300px;
 	overflow: visible;
 	text-align: right;
 	margin-left: -20px;
@@ -79,13 +80,13 @@
 }
 #branding-bar .campus a {
 	display: table-cell;
-	height: 20px;
-	padding: 8px 0 0 75px;
+	height: 40px;
+	padding: 0 0 0 75px;
 	text-decoration: none;
 	vertical-align: middle;	
   @media all and (max-width: 768px) { 
-    height: 40px;
-    padding-left: 27px;
+    height: 24px;
+    padding: 8px 0 0 27px;
   }
 
 }
