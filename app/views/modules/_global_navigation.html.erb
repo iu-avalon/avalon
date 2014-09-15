@@ -30,29 +30,28 @@ Unless required by applicable law or agreed to in writing, software distributed
       </div>
     </div>
   </div>
-  <% if (can? :read, Admin::Collection) || (can? :manage, Admin::Group) || (user_session && user_session[:lti_group]) %>
-    <div class="nav2">
-      <div class="container">
+  <div class="nav2">
+    <div class="container">
+      <% if (can? :read, Admin::Collection) || (can? :manage, Admin::Group) || (user_session && user_session[:lti_group]) %>
         <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-	</a>
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+        </a>
 
 	<div class="nav-collapse collapse">
-          <ul class="nav">
-            <% if can? :read, Admin::Collection %>
-            <li class=<%= active_for_controller('admin/collections') %>><%= link_to 'Manage Content', admin_collections_path %></li>
-            <% end %>
-
-            <% if can? :manage, Admin::Group %>
-            <li class=<%= active_for_controller('admin/groups') %>><%= link_to 'Manage Groups', admin_groups_path, target: '_admin' %></li>
-            <% end %>
-            <% if user_session && user_session[:lti_group] %>
-            <li><%= link_to(vgroup_display(user_session[:lti_group]), catalog_index_path('f[read_access_virtual_group_ssim][]' => user_session[:lti_group])) %></li>
-            <% end %>
-          </ul>        
+	  <ul class="nav">
+	    <% if can? :read, Admin::Collection %>
+	      <li class=<%= active_for_controller('admin/collections') %>><%= link_to 'Manage Content', admin_collections_path %></li>
+	    <% end %>
+	    <% if can? :manage, Admin::Group %>
+	      <li class=<%= active_for_controller('admin/groups') %>><%= link_to 'Manage Groups', admin_groups_path, target: '_admin' %></li>
+	    <% end %>
+	    <% if user_session && user_session[:lti_group] %>
+	      <li><%= link_to(vgroup_display(user_session[:lti_group]), catalog_index_path('f[read_access_virtual_group_ssim][]' => user_session[:lti_group])) %></li>
+	    <% end %>
+	  </ul>        
 	</div>
-      </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </div>
