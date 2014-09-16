@@ -32,7 +32,7 @@ Unless required by applicable law or agreed to in writing, software distributed
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= yield :page_styles %>
     <%= yield :additional_head_content %>
-    <% unless Avalon::GoogleAnalytics::WEB_PROPERTY_ID.nil? %>
+    <% if defined?(Avalon::GoogleAnalytics::WEB_PROPERTY_ID) && Avalon::GoogleAnalytics::WEB_PROPERTY_ID.present? %>
       <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
