@@ -13,23 +13,29 @@ Unless required by applicable law or agreed to in writing, software distributed
   specific language governing permissions and limitations under the License.
 ---  END LICENSE_HEADER BLOCK  ---
 %>
-<div class="container-fluid">
-<div id="header-navbar" class="navbar navbar-inverse navbar-static-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#user-util-collapse">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-    <%= link_to application_name, root_path, class: "navbar-brand desktop-hidden" %>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <div class="container">
+	<%= link_to root_path, class: 'brand' do %>
+	<p>Media <span class="brand-color2">Collections</span> Online</p>
+	<% end %>
+	<div class="iu-search">
+	  <%= link_to 'Browse', catalog_index_path(search_field: 'all_fields', utf8: '✓', q: ''), class:'navbar-browse' %>
+	  <%= render :partial=>'modules/avalon_search_form' %>
+	</div>
+      </div>
     </div>
-
-    <div class="collapse navbar-collapse" id="user-util-collapse">
-      <%= render :partial=>'/user_util_links' %>
-      <%= render :partial=>'modules/avalon_search_form' %>
+    <div class="nav2">
+      <div class="container">
+	<% if (can? :read, Admin::Collection) || (can? :manage, Admin::Group) || (user_session && user_session[:lti_group]) %>
+	<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+	  <span class="icon-bar"></span>
+	  <span class="icon-bar"></span>
+	</button>
+	<div class="nav-collapse collapse">
+	  <%= render :partial=>'/user_util_links' %>
+	</div>
+	<% end %>
+      </div>
     </div>
   </div>
-</div>
-</div>
