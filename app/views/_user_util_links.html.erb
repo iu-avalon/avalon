@@ -15,7 +15,6 @@ Unless required by applicable law or agreed to in writing, software distributed
 %>
 <div class="navbar-left">
   <ul class="nav navbar-nav">
-    <li><%= link_to 'Browse', catalog_index_path(search_field: 'all_fields', utf8: '✓', q: '') %></li>
     <% if can? :read, Admin::Collection %>
     <li class=<%= active_for_controller('admin/collections') %>><%= link_to 'Manage Content', admin_collections_path %></li>
     <% end %>
@@ -33,11 +32,6 @@ Unless required by applicable law or agreed to in writing, software distributed
 	(<span data-role='bookmark-counter'><%= current_or_guest_user.bookmarks.count %></span>)
       <% end %>
     </li>
-    <% end %>
-    <li class="divider desktop-hidden" />
-    <%= link_to_if user_signed_in?, 'Sign out', destroy_user_session_path do %>
-    <%# Fallback if the test above fails %>
-    <%= link_to 'Sign in', new_user_session_path %>
     <% end %>
   </ul>
 </div>

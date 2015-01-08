@@ -16,11 +16,12 @@ role :web, deployment_host
 role :app, deployment_host
 role :db, deployment_host, :primary => true
 
+before "bundle:install", "deploy:copy_local_gemfile"
 before "bundle:install", "deploy:link_local_files"
 before "deploy:finalize_update", "deploy:remove_symlink_targets"
 after "deploy:update_code", "deploy:symlink_dirs"
 after "deploy:update_code", "deploy:migrate"
-after "deploy:create_symlink", "deploy:trust_rvmrc"
+#after "deploy:create_symlink", "deploy:trust_rvmrc"
 if ENV['AVALON_REINDEX']
   after "deploy:create_symlink", "deploy:reindex_everything"
 end
@@ -38,7 +39,6 @@ set(:shared_children) {
     config/role_map_#{fetch(:rails_env)}.yml 
     config/secrets.yml
     config/solr.yml
-    Gemfile.local 
     log 
     tmp/pids
   }.split
@@ -61,14 +61,18 @@ namespace :deploy do
   end
 
   task :link_local_files do
-    link_shared_file "Gemfile.local", "Gemfile.local"
     link_shared_file "user_auth_cas.rb", "config/initializers/user_auth_cas.rb"
     link_shared_file "iu-ldap.rb", "config/initializers/iu-ldap.rb"
     link_shared_file "permalink.rb", "config/initializers/permalink.rb"
+    link_shared_file "google_analytics.rb", "config/initializers/google_analytics.rb"
   end
 
   task :trust_rvmrc do
     run "/usr/local/rvm/bin/rvm rvmrc trust #{latest_release}"
+  end
+
+  task :copy_local_gemfile do
+    run "if [ -f #{shared_path}/Gemfile.local ]; then cp #{shared_path}/Gemfile.local #{latest_release}/Gemfile.local; fi"
   end
 
   task :start do
