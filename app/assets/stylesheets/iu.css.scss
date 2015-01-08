@@ -198,7 +198,7 @@ footer {
     text-indent: 0;
     background: none;
     width: auto;
-    font-size: 2em;
+    font-size: 1.8em;
     text-shadow: none;
     height: auto;
     margin-left: 76px;
@@ -228,11 +228,11 @@ footer {
   height: 52px;
   padding-right: 0;
   z-index: 0;
-  @media all and (max-width: 768px) { 
-    height: 40px;
+  @media all and (max-width: 1010px) { 
+    height: 90px;
   }
-  @media all and (max-width: 670px) { 
-    height: 76px;
+  @media all and (max-width: 768px) { 
+    height: 78px;
   }
   .iu-search {
     float: right;
@@ -253,10 +253,12 @@ footer {
       color: black;
       font-size: 15px;
     }
-    @media all and (max-width: 768px) { 
-       margin-top: 0;
+    @media all and (max-width: 1010px) {
+      float: left;
+      margin-left: 76px;
+      margin-top: 0;
     } 
-    @media all and (max-width: 670px) { 
+    @media all and (max-width: 768px) { 
       float: left;
       margin-left: 8px;
     }
