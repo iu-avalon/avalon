@@ -15,14 +15,26 @@ Unless required by applicable law or agreed to in writing, software distributed
 %>
    <div class="container-fluid">
 	  <footer>
-	   <ul>
-	   	 <li><%= image_tag "AvalonMediaSystem_Logo_A.png", alt: "Avalon Media System - #{t(:release_label)} #{Avalon::VERSION}" %>
-	     <li><a href="http://www.avalonmediasystem.org">Avalon Media System Project Website</a> </li>
-	     <li><%= link_to "Contact Us", comments_path %></li>
-	   </ul>
-	   <div class="release">
-	   	<%=release_text%>
-	   	<%= git_commit_info(" (%s %s [%s])") if Rails.env == 'development' %>
+	   <div class="span10" id="footer-text">
+	     <a href="http://www.iu.edu">
+               <%= image_tag "blockiu_white.gif", alt: "Block IU" %>
+             </a>
+	     <ul>
+	       <li><strong>Media Collections Online</strong> is a service of <%= link_to "Indiana University Libraries", "http://libraries.iub.edu" %></li>
+	       <li>Powered by <%= link_to "Avalon", "http://avalonmediasystem.org" %></li>
+ 	       <li><%= link_to "Contact Us", comments_path %></li>
+       </ul>
+     
+	     <ul class="copyright">
+	       <li><a href="http://www.indiana.edu/comments/copyright.shtml">Copyright</a> © 2014 <a href="http://www.indiana.edu/">The Trustees of Indiana University</a> </li>
+	       <li><a href="http://www.indiana.edu/comments/complaint.shtml">Copyright Complaints</a></li>
+	       <li><a href="http://go.iu.edu/4My">Libraries Privacy Policy</a></li>
+	     </ul>
 	   </div>
-       </footer>
-    </div>
+	   <div id="footer-avalonlogo">
+             <a href="http://avalonmediasystem.org">
+	       <%= image_tag "Home.png", alt: "Avalon Media System - #{t(:avalon_release)}" %>
+             </a>
+	   </div>
+    </footer>
+   </div>
