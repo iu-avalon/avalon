@@ -15,47 +15,39 @@ Unless required by applicable law or agreed to in writing, software distributed
 %>
 <div id="featured_content" class="row">
   <div class="col-md-4">
-    <p><%= link_to media_object_path("avalon:4553") do %>
-      <strong>Featured Film</strong>
+    <p><%= link_to media_object_path("avalon:47") do %>
+      <strong>Featured Video</strong>
     <% end %></p>
-    <p><%= link_to media_object_path("avalon:4553") do %>
-      <%= image_tag "featured/masters.png", alt: "Featured Film", class: 'thumbnail' %>
+    <p><%= link_to media_object_path("avalon:47") do %>
+      <%= image_tag("featured/duncan1.png", alt: "Featured Video", class: 'thumbnail') %>
     <% end %></p>
-    <p><%= link_to 'The Masters of Disaster (1985)', media_object_path("avalon:4553") %></p>
+    <p><%= link_to 'Duncan Child Welfare Hearing', media_object_path("avalon:47") %></p>
   </div>
   <div class="col-md-4">
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
-      <strong>Featured Video Collection</strong>
+    <p><%= link_to media_object_path("avalon:47") do %>
+      <strong>Featured Video</strong>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
-      <%= image_tag "featured/minnieMouse.png", alt: "Featured Video Collection", class: 'thumbnail' %>
+    <p><%= link_to media_object_path("avalon:47") do %>
+      <%= image_tag "featured/duncan2.png", alt: "Featured Video", class: 'thumbnail' %>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
-      Indiana University Libraries Moving Image Archive
-    <% end %></p>
+    <p><%= link_to 'Duncan Child Welfare Hearing', media_object_path("avalon:47") %>
   </div>
   <div class="col-md-4 hidden-phone">
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Birch Bayh Senatorial Papers') do %>
-      <strong>Featured Audio Collection</strong>
+    <p><%= link_to media_object_path("avalon:45") do %>
+      <strong>Featured Video</strong>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Birch Bayh Senatorial Papers') do %>
-      <%= image_tag "featured/birchBayhHearings.png", alt: "Featured Audio Collection", class: 'thumbnail' %>
+    <p><%= link_to media_object_path("avalon:45") do %>
+      <%= image_tag "featured/holmes.png", alt: "Featured Video", class: 'thumbnail' %>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Birch Bayh Senatorial Papers') do %>
-      Birch Bayh Senate Hearings
-    <% end %></p>
+    <p><%= link_to 'Damien Holmes and Deshanon Grady Hearing', media_object_path("avalon:45") %></p>
   </div>
 </div>
 <div class="row">
-  <div id="home-about" class="col-md-9">
-    <p><strong>Media Collections Online</strong> houses audio and video collections.</p>
+  <div id="home-about" class="col-md-12">
+    <p><strong>Institute for Juvenile Court and Corrections Research</strong> houses audio and video collections.</p>
     <ul>
       <li>Use the search box, or browse using the terms on the left side to discover content.</li>
       <li>Some content is only available when you <%= link_to 'sign in', new_user_session_path %> with your ID and passphrase.</li>
-      <li>Login to <a href="https://oncourse.iu.edu">Oncourse</a> or <a href="https://canvas.iu.edu">Canvas</a> to access course materials.</li>
     </ul>
-  </div>
-  <div id="home-visit-box" class="col-md-3">
-    <p>Visit <a href="http://wiki.dlib.indiana.edu/display/MCO">Media Collections Online</a> services web site to learn about services for IU units.</p>
   </div>
 </div>
