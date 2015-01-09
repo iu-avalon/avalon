@@ -8,6 +8,28 @@ $sidenavHeaderBackgroundColor: $avalongray;
  * Branding Bar
  ****************************************/
 @font-face {
+  font-family: 'BentonSansComp';
+  src:font-url('benton-sans-comp-regular/benton-sans-comp-regular.eot');
+  src:font-url('benton-sans-comp-regular/benton-sans-comp-regular.eot?#iefix') format('embedded-opentype'),
+  /*font-url('benton-sans-comp-regular/benton-sans-comp-regular.svg#regular') format('svg'),
+  *font-url('benton-sans-comp-regular/benton-sans-comp-regular.woff') format('woff'),*/
+  font-url('benton-sans-comp-regular/benton-sans-comp-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'BentonSansCompMedium';
+  src:font-url('benton-sans-comp-medium/benton-sans-comp-medium.eot');
+  src:font-url('benton-sans-comp-medium/benton-sans-comp-medium.eot?#iefix') format('embedded-opentype'),
+  /*font-url('benton-sans-comp-medium/benton-sans-comp-medium.svg#medium') format('svg'),
+  *font-url('benton-sans-comp-medium/benton-sans-comp-medium.woff') format('woff'),*/
+  font-url('benton-sans-comp-medium/benton-sans-comp-medium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+} 
+
+@font-face {
   font-family: 'BentonSansCondensedRegular';
   src:font-url('benton-sans-condensed/regular.eot');
   src:font-url('benton-sans-condensed/regular.eot?#iefix') format('embedded-opentype'),
