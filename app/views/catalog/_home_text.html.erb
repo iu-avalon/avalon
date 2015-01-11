@@ -15,22 +15,22 @@ Unless required by applicable law or agreed to in writing, software distributed
 %>
 <div id="featured_content" class="row">
   <div class="col-md-4">
-    <p><%= link_to media_object_path("avalon:4553") do %>
+    <p><%= link_to media_object_path("avalon:6774") do %>
       <strong>Featured Film</strong>
     <% end %></p>
-    <p><%= link_to media_object_path("avalon:4553") do %>
+    <p><%= link_to media_object_path("avalon:6774") do %>
       <%= image_tag "featured/masters.png", alt: "Featured Film", class: 'thumbnail' %>
     <% end %></p>
-    <p><%= link_to 'The Masters of Disaster (1985)', media_object_path("avalon:4553") %></p>
+    <p><%= link_to 'The Masters of Disaster (1985)', media_object_path("avalon:6774") %></p>
   </div>
   <div class="col-md-4">
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
-      <strong>Featured Video Collection</strong>
+    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'IUL Moving Image Archive') do %>
+      <strong>Featured Film Collection</strong>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
+    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'IUL Moving Image Archive') do %>
       <%= image_tag "featured/minnieMouse.png", alt: "Featured Video Collection", class: 'thumbnail' %>
     <% end %></p>
-    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'Indiana University Libraries Moving Image Archive') do %>
+    <p><%= link_to catalog_index_path('f[collection_ssim][]' => 'IUL Moving Image Archive') do %>
       Indiana University Libraries Moving Image Archive
     <% end %></p>
   </div>
